@@ -16,6 +16,13 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
+# File: simple-param.yml
+parameters:
+- name: yesNo # name of the parameter; required
+  type: boolean # data type of the parameter; required
+  default: false
+
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -27,3 +34,5 @@ steps:
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: echo ${{ parameters.yesNo }}  
